@@ -18,12 +18,60 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'Webpack Plugin'
+      }),
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'service-worker.js'
+      }),
+      new WebpackPwaManifest({
+        name: 'Just Another Text Editor',
+        short_name: 'J.A.T.E.',
+        description: 'Takes notes with JavaScript syntax highlighting!',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
+            src: path.resolve('./favicon.ico'),
+            sizes: [96, 128, 192, 246, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+          {
+            src: path.resolve('./favicon.ico'),
+            size: '1024x1024',
+            destination: path.join('assets', 'icons'),
+            purpose: 'maskable'
+          }
+        ]
+      })
     ],
 
     module: {
       rules: [
-        
+        {
+          test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
+          type: 'asset/resource'
+        },
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', { targets: "defaults" }]
+              ]
+            }
+          }
+        }
       ],
     },
   };

@@ -3,6 +3,14 @@ import Editor from './editor';
 import './database';
 import '../css/style.css';
 
+// Import code mirror javascript
+import 'code-mirror-themes/lib/codemirror';
+import 'code-mirror-themes/lib/javascript/javascript'
+
+// Import code mirror stylesheets
+import 'code-mirror-themes/lib/codemirror.css';
+import 'code-mirror-themes/themes/monokai.css';
+
 const main = document.querySelector('#main');
 main.innerHTML = '';
 
