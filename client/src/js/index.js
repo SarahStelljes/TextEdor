@@ -3,11 +3,9 @@ import Editor from './editor';
 import './database';
 import '../css/style.css';
 
-
 // Import code mirror javascript
 import 'code-mirror-themes/lib/javascript/javascript.js';
 // import * as CodeMirror from 'code-mirror-themes/lib/codemirror.js';
-
 
 
 // Import code mirror stylesheets
