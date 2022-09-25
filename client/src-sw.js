@@ -41,9 +41,9 @@ const imageCache = new CacheFirst({
   ],
 });
 
-offlineFallback({
-  imageFallback: '/assets/icons/',
-  pageFallback: 'index.html'
-});
+// offlineFallback({
+//   imageFallback: '/assets/icons/',
+//   pageFallback: 'index.html'
+// });
 
 registerRoute(({ request }) => request.destination === 'image', imageCache);
