@@ -36,12 +36,12 @@ module.exports = () => {
         publicPath: './',
         icons: [
           {
-            src: path.resolve('./favicon.ico'),
+            src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 246, 384, 512],
             destination: path.join('assets', 'icons'),
           },
           {
-            src: path.resolve('./favicon.ico'),
+            src: path.resolve('src/images/logo.png'),
             size: '1024x1024',
             destination: path.join('assets', 'icons'),
             purpose: 'maskable'
@@ -53,7 +53,7 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: 'asset/resource'
         },
         {

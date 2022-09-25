@@ -2,6 +2,8 @@
 import { getDb, putDb } from './database';
 import { header } from './header';
 
+import * as CodeMirror from 'code-mirror-themes/lib/codemirror.js';
+
 export default class {
   constructor() {
     const localData = localStorage.getItem('content');

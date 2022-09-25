@@ -27,4 +27,23 @@ warmStrategyCache({
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // TODO: Implement asset caching
-registerRoute();
+const imageCache = new CacheFirst({
+  cacheName: 'image-cache',
+  fetchOptions: '/assets/icons/',
+  plugins: [
+    new CacheableResponsePlugin({
+      statuses: [0, 200],
+    }),
+    new ExpirationPlugin({
+      maxEntries: 60,
+      maxAgeSeconds: 30 * 24 * 60 * 60
+    }),
+  ],
+});
+
+offlineFallback({
+  imageFallback: '/assets/icons/',
+  pageFallback: 'index.html'
+});
+
+registerRoute(({ request }) => request.destination === 'image', imageCache);
