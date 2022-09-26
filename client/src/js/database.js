@@ -48,12 +48,11 @@ export const getDb = async () => {
   const store = tx.objectStore('jate');
 
   // .get() method to get all data
-  const request = store.index('jate').openCursor(null, 'prev');
+  const request = store.getAll();
 
   // get confirmation of request
   const result = await request;
-  console.log('result.value', result);
-  return result;
+  return result.value;
 };
 
 initdb();

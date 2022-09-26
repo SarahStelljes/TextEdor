@@ -29,7 +29,7 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 // TODO: Implement asset caching
 const imageCache = new CacheFirst({
   cacheName: 'image-cache',
-  fetchOptions: '/assets/icons/',
+  // fetchOptions: '/assets/icons/',
   plugins: [
     new CacheableResponsePlugin({
       statuses: [0, 200],
@@ -40,10 +40,4 @@ const imageCache = new CacheFirst({
     }),
   ],
 });
-
-// offlineFallback({
-//   imageFallback: '/assets/icons/',
-//   pageFallback: 'index.html'
-// });
-
 registerRoute(({ request }) => request.destination === 'image', imageCache);
